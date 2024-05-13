@@ -89,3 +89,15 @@ document.addEventListener("DOMContentLoaded", function () {
       displayWorks(data);
     });
 });
+
+function login() {
+  //je récupère les valeurs des champs utilisateurs et mot de passe
+  let username = document.getElementById("email").value;
+  let userpassword = document.getElementById("password").value;
+
+  if (username === "email" && userpassword === "password") {
+    window.location.href = "index.html";
+  } else {
+    alert("Nom utilisateur - mot de passe incorrect.");
+  }
+}
