@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // Masquer la bannière
+  const banner = document.querySelector(".banner");
+  banner.style.display = "none";
+
   // Récupérer les travaux de l'architecte depuis l'API
   fetch("http://localhost:5678/api/works")
     .then((res) => res.json())
@@ -82,8 +86,12 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       }
 
-      // Appelle de la fonction pour créer la liste de filtres et l'ajouter avant la galerie
-      createFilterList();
+      // Vérifier si l'utilisateur est connecté avant de créer la liste de filtres
+      const token = localStorage.getItem("token");
+      if (!token) {
+        // Si l'utilisateur n'est pas connecté, appelle de la fonction pour créer la liste de filtres
+        createFilterList();
+      }
 
       // Appelle de la fonction pour afficher les travaux
       displayWorks(data);

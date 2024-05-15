@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const loginForm = document.getElementById("loginForm");
   const loginLink = document.getElementById("loginLink");
+  const banner = document.querySelector(".banner");
 
   function isValidEmail(email) {
     // Pattern de l'adresse e-mail
@@ -8,6 +9,14 @@ document.addEventListener("DOMContentLoaded", function () {
     // Test de l'adresse e-mail avec la regex
     console.log(pattern.test(email));
     return pattern.test(email);
+  }
+
+  function showBanner() {
+    banner.style.display = "block";
+  }
+
+  function hideBanner() {
+    banner.style.display = "none";
   }
 
   // Vérifiez si l'utilisateur est connecté
@@ -24,7 +33,21 @@ document.addEventListener("DOMContentLoaded", function () {
       loginLink.textContent = "login";
       loginLink.href = "login.html";
       loginLink.removeEventListener("click", logoutHandler);
+      // Cacher la bannière après la déconnexion
+      hideBanner();
+
+      // Réinitialiser la liste de filtres en supprimant l'élément <ul> de la section portfolio
+      const filterList = document.querySelector(".filter");
+      if (filterList) {
+        filterList.parentNode.removeChild(filterList);
+      }
+
+      // Recharger la page pour réafficher la liste de travaux
+      window.location.reload();
     });
+
+    // Afficher la bannière
+    showBanner();
   } else {
     // Si l'utilisateur n'est pas connecté, affichez le bouton de connexion
     loginLink.textContent = "login";
@@ -57,9 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((response) => {
           // console.log("Response status:", response.status);
           if (!response.ok) {
-            throw new Error(
-              "Network response was not ok " + response.statusText
-            );
+            throw new Error("Erreur réponse réseau " + response.statusText);
           }
           return response.json();
         })
