@@ -20,7 +20,7 @@
         <ul>
           <li>projets</li>
           <li>contact</li>
-          <li id="loginNavItem"><a href="index.html">login</a></li>
+          <li><a href="index.html" id="loginLink">login</a></li>
           <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
         </ul>
       </nav>
@@ -29,13 +29,12 @@
       <h2>Log in</h2>
       <form action="#" method="post" id="loginForm">
         <label for="email">Email</label>
-        <input type="email" name="email" id="email" />
+        <input type="email" name="email" id="email" required />
         <label for="password">Mot de passe:</label>
         <input type="password" id="password" name="password" required />
         <input type="submit" value="Envoyer" />
       </form>
-      <!-- <u></u> pour surligné le texte -->
-      <p><u> Mot de passe oublié ?</u></p>
+      <p><u>Mot de passe oublié ?</u></p>
     </section>
     <script src="./login.js"></script>
   </body>
