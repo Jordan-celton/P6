@@ -78,6 +78,8 @@ function createFilterList(data) {
 
 document.addEventListener("DOMContentLoaded", function () {
   // Masquer la bannière
+  const modal = document.getElementById("openModalLink");
+  modal.style.display = "none";
   const banner = document.querySelector(".banner");
   banner.style.display = "none";
 

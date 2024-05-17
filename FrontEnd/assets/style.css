@@ -251,9 +251,9 @@ li:hover {
   font-weight: 400;
   font-size: 14px;
 }
-
-/* .modal {
-  display: flex;
+/* // CSS de la modale */
+.modal {
+  display: none;
   align-items: center;
   justify-content: center;
   position: fixed;
@@ -263,16 +263,57 @@ li:hover {
   height: 100%;
   background: rgba(0, 0, 0, 0.4);
 }
+
+.modal.show {
+  display: flex;
+}
+
 .modal-wrapper {
   overflow: auto;
   background-color: #fff;
-  width: 300px;
-  height: 300px;
+  width: 630px;
+  height: 680px;
   padding: 20px;
-  width: 200px;
+  position: relative;
   max-width: calc(100vw - 20px);
   max-height: calc(100vh - 20px);
-} */
+}
+
+.modal-wrapper h2 {
+  font-family: "Work Sans";
+  font-size: 26px;
+  font-weight: 400;
+  color: black;
+  padding-top: 50px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: none;
+  border: none;
+  font-size: 46px;
+  cursor: pointer;
+}
+
+.btn-add-photo {
+  position: absolute;
+  bottom: 20px;
+  right: 250px;
+  font-family: "Syne";
+  font-weight: 700;
+  color: white;
+  background-color: #1d6154;
+  margin: 2em auto;
+  width: 180px;
+  height: 40px;
+  text-align: center;
+  border-radius: 60px;
+  cursor: pointer;
+}
+
+/* //--------------------------------- */
 
 /* CSS de la partie filtre */
 .filter {

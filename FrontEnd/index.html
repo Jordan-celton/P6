@@ -65,9 +65,17 @@
       <section id="portfolio">
         <div class="projects">
           <h2>Mes Projets</h2>
-          <a href="#modal"><i class="far fa-pen-to-square"></i>modifier</a>
+          <a href="#modal" id="openModalLink">
+            <i class="far fa-pen-to-square"></i>modifier
+          </a>
           <aside id="modal" class="modal" aria-hidden="true">
-            <div class="modal-wrapper"></div>
+            <div class="modal-wrapper">
+              <h2>Galerie photo</h2>
+              <button class="close-btn" aria-label="Close modal">
+                &times;
+              </button>
+              <button class="btn-add-photo">Ajouter une photo</button>
+            </div>
           </aside>
         </div>
         <div class="gallery"></div>
