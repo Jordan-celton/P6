@@ -252,6 +252,13 @@ li:hover {
   font-size: 14px;
 }
 /* // CSS de la modale */
+.hidden {
+  display: none;
+}
+.hidden-text {
+  display: none;
+}
+
 .modal {
   display: none;
   align-items: center;
@@ -269,7 +276,6 @@ li:hover {
 }
 
 .modal-wrapper {
-  overflow: auto;
   background-color: #fff;
   width: 630px;
   height: 680px;
@@ -277,6 +283,7 @@ li:hover {
   position: relative;
   max-width: calc(100vw - 20px);
   max-height: calc(100vh - 20px);
+  border-radius: 10px;
 }
 
 .modal-wrapper h2 {
@@ -285,6 +292,30 @@ li:hover {
   font-weight: 400;
   color: black;
   padding-top: 50px;
+}
+.modal-page {
+  margin: 40px 80px;
+}
+.modal-gallery figure {
+  position: relative;
+}
+.modal-gallery .fa-trash-can {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 15px;
+  color: white;
+  cursor: pointer;
+  background: black;
+  height: 25px;
+  width: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fa-trash-can {
+  display: none;
 }
 
 .close-btn {
@@ -297,7 +328,8 @@ li:hover {
   cursor: pointer;
 }
 
-.btn-add-photo {
+.btn-add-photo,
+.btn-validate {
   position: absolute;
   bottom: 20px;
   right: 250px;
@@ -310,6 +342,47 @@ li:hover {
   height: 40px;
   text-align: center;
   border-radius: 60px;
+  cursor: pointer;
+  border: none;
+}
+.modal-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(calc(20% - 8px), 1fr));
+  gap: 20px 10px;
+  justify-items: center;
+  align-items: center;
+  position: relative;
+}
+hr {
+  color: rgba(179, 179, 179, 1);
+  margin-top: 50px;
+}
+
+.modal-gallery img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.back-btn {
+  position: absolute;
+  top: 33px;
+  left: 24px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: black;
+}
+.btn2-add-photo {
+  background-color: #cbd6dc;
+  border-radius: 50px;
+  color: #306685;
+  border: none;
+  font-family: "Work Sans";
+  width: 173px;
+  height: 36px;
   cursor: pointer;
 }
 

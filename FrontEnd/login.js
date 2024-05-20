@@ -1,3 +1,4 @@
+// Fonctions Utilitaires
 function isValidEmail(email) {
   const pattern = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
   return pattern.test(email);
@@ -18,20 +19,31 @@ function showOpenModif() {
   openModalLink.style.display = "";
 }
 
+function updateModalTitle(title) {
+  const modalTitle = document.querySelector(".modal-wrapper h2");
+  modalTitle.textContent = title;
+}
+
+// Fonctions de Gestion du Modal
 function setupModal() {
   const modal = document.getElementById("modal");
   const openModalLink = document.getElementById("openModalLink");
-  const closeModalBtn = modal.querySelector(".close-btn");
+  const closeModalBtns = modal.querySelectorAll(".close-btn");
+  const addPhotoBtn = modal.querySelector(".btn-add-photo");
+  const backBtn = modal.querySelector(".back-btn");
 
   openModalLink.addEventListener("click", function (event) {
     event.preventDefault();
     modal.classList.add("show");
     modal.setAttribute("aria-hidden", "false");
+    updateModalTitle("Galerie photo");
   });
 
-  closeModalBtn.addEventListener("click", function () {
-    modal.classList.remove("show");
-    modal.setAttribute("aria-hidden", "true");
+  closeModalBtns.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      modal.classList.remove("show");
+      modal.setAttribute("aria-hidden", "true");
+    });
   });
 
   window.addEventListener("click", function (event) {
@@ -40,8 +52,21 @@ function setupModal() {
       modal.setAttribute("aria-hidden", "true");
     }
   });
+
+  addPhotoBtn.addEventListener("click", function () {
+    document.getElementById("mainPage").classList.add("hidden");
+    document.getElementById("addPhotoPage").classList.remove("hidden");
+    updateModalTitle("Ajout photo");
+  });
+
+  backBtn.addEventListener("click", function () {
+    document.getElementById("mainPage").classList.remove("hidden");
+    document.getElementById("addPhotoPage").classList.add("hidden");
+    updateModalTitle("Galerie photo");
+  });
 }
 
+// Fonctions de Connexion/Déconnexion
 function logoutHandler(event) {
   event.preventDefault();
   localStorage.removeItem("token");
@@ -113,7 +138,8 @@ function sendEmailAndPassword(event) {
     });
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+// Fonction principale
+function initialize() {
   const loginForm = document.getElementById("loginForm");
   const connected = localStorage.getItem("token");
 
@@ -128,4 +154,6 @@ document.addEventListener("DOMContentLoaded", function () {
       loginForm.addEventListener("submit", sendEmailAndPassword);
     }
   }
-});
+}
+
+document.addEventListener("DOMContentLoaded", initialize);
