@@ -276,6 +276,8 @@ li:hover {
 }
 
 .modal-wrapper {
+  left: 500px;
+  top: 250px;
   background-color: #fff;
   width: 630px;
   height: 680px;
@@ -328,15 +330,14 @@ li:hover {
   cursor: pointer;
 }
 
-.btn-add-photo,
-.btn-validate {
+.btn-add-photo {
   position: absolute;
   bottom: 20px;
   right: 250px;
   font-family: "Syne";
   font-weight: 700;
   color: white;
-  background-color: #1d6154;
+  background: rgba(29, 97, 84, 1);
   margin: 2em auto;
   width: 180px;
   height: 40px;
@@ -345,6 +346,29 @@ li:hover {
   cursor: pointer;
   border: none;
 }
+
+.btn-validate {
+  position: absolute;
+  bottom: 20px;
+  right: 250px;
+  font-family: "Syne";
+  font-weight: 700;
+  color: white;
+  background: rgba(167, 167, 167, 1);
+  margin: 2em auto;
+  width: 180px;
+  height: 40px;
+  text-align: center;
+  border-radius: 60px;
+  cursor: pointer;
+  border: none;
+}
+
+.success {
+  background-color: rgba(29, 97, 84, 1);
+  color: white;
+}
+
 .modal-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(calc(20% - 8px), 1fr));
@@ -364,7 +388,6 @@ hr {
   max-width: 100%;
   max-height: 100%;
 }
-
 .back-btn {
   position: absolute;
   top: 33px;
@@ -375,6 +398,47 @@ hr {
   cursor: pointer;
   color: black;
 }
+.fa-image {
+  color: rgba(185, 197, 204, 1);
+  font-size: 60px;
+  width: 76px;
+  height: 76px;
+}
+
+.btn2 {
+  display: flex;
+  background: rgba(232, 241, 246, 1);
+  width: 420px;
+  height: 169px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+#nom_photo {
+  box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+  border: none;
+  margin-top: 10px;
+  width: 420px;
+  height: 51px;
+  padding: 0;
+  font-family: "Work Sans";
+}
+#categorie {
+  box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+  border: none;
+  margin-top: 10px;
+  width: 420px;
+  height: 51px;
+  font-family: "Work Sans";
+}
+#photoPreview {
+  position: absolute;
+  top: 127px;
+  right: 296px;
+  width: 125px;
+}
 .btn2-add-photo {
   background-color: #cbd6dc;
   border-radius: 50px;
@@ -384,6 +448,7 @@ hr {
   width: 173px;
   height: 36px;
   cursor: pointer;
+  margin-bottom: 10px;
 }
 
 /* //--------------------------------- */

@@ -86,8 +86,25 @@
                 <button class="close-btn" aria-label="Close modal">
                   &times;
                 </button>
-                <button class="btn2-add-photo">+ Ajouter photo</button>
-                <p>jpg, png : 4mo max</p>
+                <div class="btn2">
+                  <i class="fa-regular fa-image"></i>
+                  <button class="btn2-add-photo">+ Ajouter photo</button>
+                  <p>jpg, png : 4mo max</p>
+                </div>
+                <!-- Input de type file pour sélectionner une photo -->
+                <input
+                  type="file"
+                  id="photoInput"
+                  style="display: none"
+                  accept="image/*"
+                />
+                <!-- Ajout de l'élément img pour l'aperçu de la photo -->
+                <img
+                  id="photoPreview"
+                  src=""
+                  alt="Aperçu de la photo"
+                  style="display: none; max-width: 100%; margin-top: 10px"
+                />
                 <form id="photoForm">
                   <label for="nom_photo">Titre </label><br />
                   <input
@@ -99,9 +116,9 @@
                   <label for="categorie">Catégorie </label><br />
                   <select id="categorie" name="categorie">
                     <option value="" selected disabled></option>
-                    <option value="paysage">Objets</option>
-                    <option value="portrait">Appartements</option>
-                    <option value="animaux">
+                    <option value="Objets">Objets</option>
+                    <option value="Appartements">Appartements</option>
+                    <option value="Hotels & restaurants">
                       Hotels & restaurants
                     </option></select
                   ><br /><br />

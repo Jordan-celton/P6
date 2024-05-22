@@ -24,7 +24,7 @@ function updateModalTitle(title) {
   modalTitle.textContent = title;
 }
 
-// Fonctions de Gestion du Modal
+// Fonctions de Gestion de la Modale
 function setupModal() {
   const modal = document.getElementById("modal");
   const openModalLink = document.getElementById("openModalLink");

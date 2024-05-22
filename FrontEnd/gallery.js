@@ -20,7 +20,7 @@ function addTrashIcon(figureElement, workId) {
   const trashIcon = document.createElement("i");
   trashIcon.classList.add("fa-solid", "fa-trash-can");
 
-  // Ajouter un gestionnaire d'événements pour supprimer l'élément figure au clic
+  // Ajout d'un gestionnaire d'événements pour supprimer l'élément figure au clic
   trashIcon.addEventListener("click", async function () {
     try {
       await deleteWorkById(workId);
@@ -124,12 +124,144 @@ function createFilterList(data) {
   });
 }
 
+function initializeModal() {
+  const modal = document.getElementById("modal");
+
+  // Ouverture de la modale
+  const openModalLink = document.getElementById("openModalLink");
+  openModalLink.addEventListener("click", (event) => {
+    event.preventDefault();
+    modal.style.display = "block";
+  });
+
+  // Fermeture de la modale
+  const closeButtons = document.querySelectorAll(".close-btn");
+  closeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+  });
+
+  window.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+
+  // Navigation entre les pages de la modale
+  const mainPage = document.getElementById("mainPage");
+  const addPhotoPage = document.getElementById("addPhotoPage");
+  const addPhotoButton = document.querySelector(".btn-add-photo");
+  const backButton = document.querySelector(".back-btn");
+  const btn2AddPhoto = document.querySelector(".btn2-add-photo");
+  const photoInput = document.getElementById("photoInput");
+  const photoPreview = document.getElementById("photoPreview");
+  const btnValidate = document.querySelector(".btn-validate");
+
+  addPhotoButton.addEventListener("click", () => {
+    mainPage.classList.add("hidden");
+    addPhotoPage.classList.remove("hidden");
+  });
+
+  backButton.addEventListener("click", () => {
+    addPhotoPage.classList.add("hidden");
+    mainPage.classList.remove("hidden");
+  });
+
+  btn2AddPhoto.addEventListener("click", () => {
+    photoInput.click();
+  });
+
+  photoInput.addEventListener("change", (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        photoPreview.src = e.target.result;
+        photoPreview.style.display = "block";
+
+        // Cacher les éléments .btn2-add-photo et p
+        const elementsToHide = document.querySelectorAll(".btn2-add-photo, p");
+        elementsToHide.forEach((element) => {
+          element.style.display = "none";
+        });
+      };
+      reader.readAsDataURL(file);
+    } else {
+      photoPreview.style.display = "none";
+    }
+  });
+
+  btnValidate.addEventListener("click", async () => {
+    const title = document.getElementById("nom_photo").value;
+    const category = document.getElementById("categorie").value;
+
+    if (!title || !category || !photoInput.files[0]) {
+      alert("Veuillez remplir tous les champs et sélectionner une photo.");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("category", category);
+    formData.append("image", photoInput.files[0]);
+
+    try {
+      const response = await fetch("http://localhost:5678/api/works", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error(
+          "Erreur lors de l'ajout du travail: " + response.statusText
+        );
+      }
+
+      const newWork = await response.json();
+
+      // Ajouter le nouveau travail à la galerie principale et à la galerie modale
+      const gallery = document.querySelector(".gallery");
+      const modalGallery = document.querySelector(".modal-gallery");
+
+      const figureElement = createFigureElement(newWork);
+      gallery.appendChild(figureElement);
+
+      const modalFigureElement = createFigureElement(newWork);
+      addTrashIcon(modalFigureElement, newWork.id);
+      modalGallery.appendChild(modalFigureElement);
+
+      // Réinitialiser le formulaire et revenir à la page principale de la modale
+      document.getElementById("photoForm").reset();
+      photoPreview.style.display = "none";
+      mainPage.classList.remove("hidden");
+      addPhotoPage.classList.add("hidden");
+
+      // Cacher les éléments i, button, et p
+      const elementsToHide = document.querySelectorAll("i, button, p");
+      elementsToHide.forEach((element) => {
+        element.style.display = "none";
+      });
+
+      // Changer la couleur du bouton après succès
+      btnValidate.classList.add("success");
+
+      alert("Photo ajoutée avec succès.");
+    } catch (error) {
+      console.error("Erreur:", error);
+      alert("Erreur lors de l'ajout de la photo.");
+    }
+  });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
-  // Masquer la bannière
-  const modal = document.getElementById("openModalLink");
-  modal.style.display = "none";
   const banner = document.querySelector(".banner");
-  banner.style.display = "none";
+  if (banner) {
+    banner.style.display = "none";
+  }
 
   // Récupérer les travaux de l'architecte depuis l'API
   fetch("http://localhost:5678/api/works")
@@ -142,5 +274,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
       displayWorks(data, ".gallery");
       displayWorksInModal(data);
+      initializeModal();
     });
 });
