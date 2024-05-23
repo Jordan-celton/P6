@@ -124,11 +124,31 @@ function createFilterList(data) {
   });
 }
 
+// Fonction pour vérifier si tous les champs du formulaire sont remplis
+function checkFormValidity() {
+  const title = document.getElementById("nom_photo").value;
+  const category = document.getElementById("categorie").value;
+  const photo = document.getElementById("photoInput").files[0];
+  const btnValidate = document.querySelector(".btn-validate");
+
+  if (title && category && photo) {
+    btnValidate.classList.add("success");
+  } else {
+    btnValidate.classList.remove("success");
+  }
+}
+
 function initializeModal() {
   const modal = document.getElementById("modal");
 
-  // Ouverture de la modale
+  // Cacher le lien pour ouvrir la modale si l'utilisateur est déconnecté
   const openModalLink = document.getElementById("openModalLink");
+  const connected = localStorage.getItem("token");
+  if (!connected) {
+    openModalLink.style.display = "none";
+  }
+
+  // Ouverture de la modale
   openModalLink.addEventListener("click", (event) => {
     event.preventDefault();
     modal.style.display = "block";
@@ -181,7 +201,9 @@ function initializeModal() {
         photoPreview.style.display = "block";
 
         // Cacher les éléments .btn2-add-photo et p
-        const elementsToHide = document.querySelectorAll(".btn2-add-photo, p");
+        const elementsToHide = document.querySelectorAll(
+          ".btn2-add-photo, .text-btn"
+        );
         elementsToHide.forEach((element) => {
           element.style.display = "none";
         });
@@ -190,7 +212,15 @@ function initializeModal() {
     } else {
       photoPreview.style.display = "none";
     }
+    checkFormValidity();
   });
+
+  document
+    .getElementById("nom_photo")
+    .addEventListener("input", checkFormValidity);
+  document
+    .getElementById("categorie")
+    .addEventListener("change", checkFormValidity);
 
   btnValidate.addEventListener("click", async () => {
     const title = document.getElementById("nom_photo").value;
@@ -223,7 +253,6 @@ function initializeModal() {
 
       const newWork = await response.json();
 
-      // Ajouter le nouveau travail à la galerie principale et à la galerie modale
       const gallery = document.querySelector(".gallery");
       const modalGallery = document.querySelector(".modal-gallery");
 
@@ -241,13 +270,13 @@ function initializeModal() {
       addPhotoPage.classList.add("hidden");
 
       // Cacher les éléments i, button, et p
-      const elementsToHide = document.querySelectorAll("i, button, p");
+      const elementsToHide = document.querySelectorAll("i, button, .text-btn");
       elementsToHide.forEach((element) => {
         element.style.display = "none";
       });
 
-      // Changer la couleur du bouton après succès
-      btnValidate.classList.add("success");
+      // Réinitialiser la couleur du bouton après succès
+      btnValidate.classList.remove("success");
 
       alert("Photo ajoutée avec succès.");
     } catch (error) {
