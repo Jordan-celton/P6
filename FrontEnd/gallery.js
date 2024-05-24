@@ -1,3 +1,16 @@
+// Créez un objet pour mapper les valeurs de catégorie textuelles aux entiers correspondants
+const categoryMapping = {
+  Objets: 1,
+  Appartements: 2,
+  "Hotels & restaurants": 3,
+};
+
+// Fonction pour obtenir la valeur de catégorie en entier
+function getCategoryValue(categoryText) {
+  // Vérifiez si la valeur de catégorie existe dans le mapping, sinon retournez null
+  return categoryMapping[categoryText] || null;
+}
+
 // Fonction pour créer un élément figure avec une image et une légende
 function createFigureElement(work) {
   const figureElement = document.createElement("figure");
@@ -225,16 +238,17 @@ function initializeModal() {
   btnValidate.addEventListener("click", async () => {
     const title = document.getElementById("nom_photo").value;
     const category = document.getElementById("categorie").value;
+    const photo = photoInput.files[0];
 
-    if (!title || !category || !photoInput.files[0]) {
+    if (!title || !category || !photo) {
       alert("Veuillez remplir tous les champs et sélectionner une photo.");
       return;
     }
 
     const formData = new FormData();
     formData.append("title", title);
-    formData.append("category", category);
-    formData.append("image", photoInput.files[0]);
+    formData.append("category", getCategoryValue(category));
+    formData.append("image", photo);
 
     try {
       const response = await fetch("http://localhost:5678/api/works", {

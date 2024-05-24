@@ -276,15 +276,14 @@ li:hover {
 }
 
 .modal-wrapper {
-  left: 500px;
-  top: 250px;
+  left: 50%;
+  top: 50%;
   background-color: #fff;
   width: 630px;
   height: 680px;
   padding: 20px;
   position: relative;
-  max-width: calc(100vw - 20px);
-  max-height: calc(100vh - 20px);
+  transform: translate(-50%, -50%);
   border-radius: 10px;
 }
 
@@ -469,12 +468,15 @@ hr {
   border-radius: 60px;
   margin: 10px;
   height: 37px;
-  width: 100%;
+  padding: 0 20px;
+  width: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  margin-bottom: 30px;
 }
+
 .filter li:hover {
   background-color: #1d6154;
   color: white;
