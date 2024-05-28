@@ -1,29 +1,28 @@
-// Fonctions Utilitaires
+// Fonction pour mettre à jour le titre de la modale
 function updateModalTitle(title) {
   const modalTitle = document.querySelector(".modal-wrapper h2");
   modalTitle.textContent = title;
 }
 
+// Fonction pour valider une adresse e-mail
 function isValidEmail(email) {
   const pattern = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
   return pattern.test(email);
 }
 
+// Fonction pour afficher la bannière
 function showBanner() {
   const banner = document.querySelector(".banner");
   banner.style.display = "";
 }
 
-function hideBanner() {
-  const banner = document.querySelector(".banner");
-  banner.style.display = "none";
-}
-
+// Fonction pour afficher le lien d'ouverture de la modale
 function showOpenModif() {
   const openModalLink = document.getElementById("openModalLink");
   openModalLink.style.display = "";
 }
 
+// Fonction pour afficher le bouton de déconnexion
 function showbuttonlogout() {
   const loginLink = document.getElementById("loginLink");
   loginLink.textContent = "logout";
@@ -31,13 +30,14 @@ function showbuttonlogout() {
   loginLink.addEventListener("click", logoutHandler);
 }
 
+// Fonction pour afficher le bouton de connexion
 function showbuttonlogin() {
   const loginLink = document.getElementById("loginLink");
   loginLink.textContent = "login";
   loginLink.href = "login.html";
 }
 
-// Fonctions de Connexion/Déconnexion
+// Fonction pour envoyer l'e-mail et le mot de passe lors de la connexion
 function sendEmailAndPassword(event) {
   event.preventDefault();
 
@@ -76,6 +76,7 @@ function sendEmailAndPassword(event) {
     });
 }
 
+// Fonction pour gérer la déconnexion
 function logoutHandler(event) {
   event.preventDefault();
   localStorage.removeItem("token");
@@ -85,18 +86,10 @@ function logoutHandler(event) {
   loginLink.textContent = "login";
   loginLink.href = "login.html";
   loginLink.removeEventListener("click", logoutHandler);
-
-  hideBanner();
-
-  const filterList = document.querySelector(".filter");
-  if (filterList) {
-    filterList.parentNode.removeChild(filterList);
-  }
-
   window.location.reload();
 }
 
-// Fonctions de Gestion de la Modale
+// Fonctions pour gérer la modale
 function setupModal() {
   const modal = document.getElementById("modal");
   const openModalLink = document.getElementById("openModalLink");
@@ -104,6 +97,7 @@ function setupModal() {
   const addPhotoBtn = modal.querySelector(".btn-add-photo");
   const backBtn = modal.querySelector(".back-btn");
 
+  // Ouvrir la modale
   openModalLink.addEventListener("click", function (event) {
     event.preventDefault();
     modal.classList.add("show");
@@ -111,6 +105,7 @@ function setupModal() {
     updateModalTitle("Galerie photo");
   });
 
+  // Fermer la modale en cliquant sur le bouton de fermeture
   closeModalBtns.forEach((btn) => {
     btn.addEventListener("click", function () {
       modal.classList.remove("show");
@@ -118,6 +113,7 @@ function setupModal() {
     });
   });
 
+  // Fermer la modale en cliquant en dehors de celle-ci
   window.addEventListener("click", function (event) {
     if (event.target === modal) {
       modal.classList.remove("show");
@@ -125,12 +121,14 @@ function setupModal() {
     }
   });
 
+  // Aller à la page d'ajout de photo depuis la modale
   addPhotoBtn.addEventListener("click", function () {
     document.getElementById("mainPage").classList.add("hidden");
     document.getElementById("addPhotoPage").classList.remove("hidden");
     updateModalTitle("Ajout photo");
   });
 
+  // Revenir à la galerie depuis la page d'ajout de photo
   backBtn.addEventListener("click", function () {
     document.getElementById("mainPage").classList.remove("hidden");
     document.getElementById("addPhotoPage").classList.add("hidden");
@@ -138,7 +136,7 @@ function setupModal() {
   });
 }
 
-// Fonction principale
+// Fonction principale d'initialisation
 function initialize() {
   const loginForm = document.getElementById("loginForm");
   const connected = localStorage.getItem("token");
@@ -156,4 +154,5 @@ function initialize() {
   }
 }
 
+// Exécuter la fonction d'initialisation lorsque le DOM est chargé
 document.addEventListener("DOMContentLoaded", initialize);
