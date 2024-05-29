@@ -236,7 +236,7 @@ function showModal(event) {
 // Fonction pour fermer le modal
 function closeModal() {
   modal.style.display = "none";
-  resetAddPhotoModal();
+  hideAddPhotoPage(); // Appel de la fonction pour revenir à la première page
 }
 
 // Fonction pour fermer le modal en cliquant à l'extérieur
@@ -263,6 +263,7 @@ function hideAddPhotoPage() {
 function triggerPhotoInput() {
   photoInput.click();
 }
+
 // Fonction pour cacher la bannière
 function hideBanner() {
   const banner = document.querySelector(".banner");
