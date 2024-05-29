@@ -1,0 +1,543 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/** end reset css**/
+body {
+  max-width: 1140px;
+  margin: auto;
+  font-family: "Work Sans";
+  font-size: 14px;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px 0;
+  padding-top: 50px;
+}
+section {
+  margin: 50px 0;
+}
+
+h1 {
+  display: flex;
+  flex-direction: column;
+  font-family: "Syne";
+  font-size: 22px;
+  font-weight: 800;
+  color: #b1663c;
+}
+
+h1 > span {
+  font-family: "Work Sans";
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+h2 {
+  font-family: "Syne";
+  font-weight: 700;
+  font-size: 30px;
+  color: #1d6154;
+}
+.banner {
+  display: flex;
+  background-color: black;
+  color: white;
+  width: 100%;
+  height: 59px;
+  align-items: center;
+  justify-content: center;
+  font-family: "Work Sans";
+  font-size: 14px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.banner i {
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.banner p {
+  font-family: "Work Sans";
+  font-size: 16px;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+}
+nav li {
+  padding: 0 10px;
+  font-size: 1.2em;
+}
+nav li a {
+  text-decoration: none;
+  color: black;
+}
+
+li:hover {
+  color: #b1663c;
+}
+#introduction {
+  display: flex;
+  align-items: center;
+}
+#introduction figure {
+  flex: 1;
+}
+#introduction img {
+  display: block;
+  margin: auto;
+  width: 80%;
+}
+
+#introduction article {
+  flex: 1;
+}
+#introduction h2 {
+  margin-bottom: 1em;
+}
+
+#introduction p {
+  margin-bottom: 0.5em;
+}
+#portfolio h2 {
+  text-align: center;
+}
+.projects {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.projects a {
+  text-decoration: none;
+  color: black;
+  display: flex;
+  gap: 5px;
+  font-family: "Work Sans";
+  font-weight: 400;
+  font-size: 14px;
+}
+/* // CSS de la modale */
+.hidden {
+  display: none;
+}
+.hidden-text {
+  display: none;
+}
+
+.modal {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-wrapper {
+  left: 50%;
+  top: 50%;
+  background-color: #fff;
+  width: 630px;
+  height: 680px;
+  padding: 20px;
+  position: relative;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+}
+
+.modal-wrapper h2 {
+  font-family: "Work Sans";
+  font-size: 26px;
+  font-weight: 400;
+  color: black;
+  padding-top: 50px;
+}
+.modal-page {
+  margin: 40px 80px;
+}
+.modal-gallery figure {
+  position: relative;
+}
+.modal-gallery .fa-trash-can {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 15px;
+  color: white;
+  cursor: pointer;
+  background: black;
+  height: 25px;
+  width: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fa-trash-can {
+  display: none;
+}
+
+.close-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: none;
+  border: none;
+  font-size: 46px;
+  cursor: pointer;
+}
+
+.btn-add-photo {
+  position: absolute;
+  bottom: 20px;
+  right: 250px;
+  font-family: "Syne";
+  font-weight: 700;
+  color: white;
+  background: rgba(29, 97, 84, 1);
+  margin: 2em auto;
+  width: 180px;
+  height: 40px;
+  text-align: center;
+  border-radius: 60px;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-validate {
+  position: absolute;
+  bottom: 20px;
+  right: 250px;
+  font-family: "Syne";
+  font-weight: 700;
+  color: white;
+  background: rgba(167, 167, 167, 1);
+  margin: 2em auto;
+  width: 180px;
+  height: 40px;
+  text-align: center;
+  border-radius: 60px;
+  cursor: pointer;
+  border: none;
+}
+
+.success {
+  background-color: rgba(29, 97, 84, 1);
+  color: white;
+}
+
+.modal-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(calc(20% - 8px), 1fr));
+  gap: 20px 10px;
+  justify-items: center;
+  align-items: center;
+  position: relative;
+}
+hr {
+  color: rgba(179, 179, 179, 1);
+  margin-top: 50px;
+}
+
+.modal-gallery img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+.back-btn {
+  position: absolute;
+  top: 33px;
+  left: 24px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: black;
+}
+.fa-image {
+  color: rgba(185, 197, 204, 1);
+  font-size: 60px;
+  width: 76px;
+  height: 76px;
+}
+
+.btn2 {
+  display: flex;
+  background: rgba(232, 241, 246, 1);
+  width: 420px;
+  height: 169px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+#nom_photo {
+  box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+  border: none;
+  margin-top: 10px;
+  width: 420px;
+  height: 51px;
+  padding: 0;
+  font-family: "Work Sans";
+}
+#categorie {
+  box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+  border: none;
+  margin-top: 10px;
+  width: 420px;
+  height: 51px;
+  font-family: "Work Sans";
+}
+#photoPreview {
+  position: absolute;
+  top: 127px;
+  right: 296px;
+  width: 125px;
+}
+.btn2-add-photo {
+  background-color: #cbd6dc;
+  border-radius: 50px;
+  color: #306685;
+  border: none;
+  font-family: "Work Sans";
+  width: 173px;
+  height: 36px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+/* //--------------------------------- */
+
+/* CSS de la partie filtre */
+.filter {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  color: rgba(29, 97, 84, 1);
+  font-weight: 700;
+  font-size: 16px;
+  font-family: "Syne";
+}
+
+.filter li {
+  border: solid 1px rgba(29, 97, 84, 1);
+  border-radius: 60px;
+  margin: 10px;
+  height: 37px;
+  padding: 0 20px;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+
+.filter li:hover {
+  background-color: #1d6154;
+  color: white;
+}
+/*---------------------------------------------------------- */
+.gallery {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+}
+
+.gallery img {
+  width: 100%;
+}
+#contact {
+  width: 50%;
+  margin: auto;
+}
+#contact > * {
+  text-align: center;
+}
+#contact h2 {
+  margin-bottom: 20px;
+}
+#contact form {
+  text-align: left;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+#contact input {
+  height: 50px;
+  font-size: 1.2em;
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+#contact label {
+  margin: 2em 0 1em 0;
+}
+#contact textarea {
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+input[type="submit"] {
+  font-family: "Syne";
+  font-weight: 700;
+  color: white;
+  background-color: #1d6154;
+  margin: 2em auto;
+  width: 180px;
+  text-align: center;
+  border-radius: 60px;
+  cursor: pointer;
+}
+
+footer nav ul {
+  display: flex;
+  justify-content: flex-end;
+  margin: 2em;
+}
