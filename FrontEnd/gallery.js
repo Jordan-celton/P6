@@ -1,3 +1,9 @@
+const modal = document.getElementById("modal");
+const mainPage = document.getElementById("mainPage");
+const addPhotoPage = document.getElementById("addPhotoPage");
+const photoPreview = document.getElementById("photoPreview");
+const photoInput = document.getElementById("photoInput");
+
 // Mapping des catégories avec leurs valeurs associées
 const categoryMapping = {
   Objets: 1,
@@ -7,6 +13,7 @@ const categoryMapping = {
 
 // Fonction pour obtenir la valeur de la catégorie à partir du texte
 function getCategoryValue(categoryText) {
+  console.log(getCategoryValue);
   return categoryMapping[categoryText] || null;
 }
 
@@ -30,7 +37,7 @@ function createFigureElement(work) {
 // Fonction pour ajouter une icône de poubelle à un élément <figure>
 function addTrashIcon(figureElement, workId) {
   const trashIcon = document.createElement("i");
-  trashIcon.classList.add("fa-solid", "fa-trash-can", "trash-icon");
+  trashIcon.classList.add("fa-solid", "fa-trash-can");
 
   trashIcon.addEventListener("click", async () => {
     try {
@@ -145,7 +152,6 @@ function checkFormValidity() {
 
 // Fonction pour réinitialiser le modal d'ajout de photo
 function resetAddPhotoModal() {
-  const photoInput = document.getElementById("photoInput");
   const photoPreview = document.getElementById("photoPreview");
   const btnValidate = document.querySelector(".btn-validate");
   const elementsToShow = document.querySelectorAll(
@@ -300,14 +306,10 @@ function handleInputOrChangeEvent() {
 
 // Fonction pour initialiser le modal et ses événements
 function initializeModal() {
-  const modal = document.getElementById("modal");
-  const mainPage = document.getElementById("mainPage");
-  const addPhotoPage = document.getElementById("addPhotoPage");
   const addPhotoButton = document.querySelector(".btn-add-photo");
   const backButton = document.querySelector(".back-btn");
   const btn2AddPhoto = document.querySelector(".btn2-add-photo");
   const photoInput = document.getElementById("photoInput");
-  const photoPreview = document.getElementById("photoPreview");
   const btnValidate = document.querySelector(".btn-validate");
   const openModalLink = document.getElementById("openModalLink");
   const connected = localStorage.getItem("token");
