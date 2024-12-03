@@ -13,9 +13,9 @@ git clone https://github.com/Jordan-celton/P6.git
 Installez les dépendances (si nécessaire) :
 ```bash
 npm install
-
-Lancez un serveur local pour tester votre projet :
 ```
+Lancez un serveur local pour tester votre projet :
+
 ```bash
 npx live-server
 ```
