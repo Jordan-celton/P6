@@ -1,8 +1,72 @@
-Résumé du Projet
-Ce projet consiste à créer une page web dynamique pour le site internet d'une architecte d'intérieur en utilisant JavaScript et en interagissant avec une API.
+# 🏗️ Développement d'une page web dynamique pour une architecte d'intérieur
 
-Objectifs d'Apprentissage :
-Développement Front-End : Travailler sur la page de présentation des travaux de l'architecte à partir du HTML fourni, en gérant les événements utilisateurs et en manipulant le DOM avec JavaScript.
-Création de Pages Dynamiques : Concevoir une page de connexion pour l'administrateur du site et une modale pour uploader de nouveaux médias, développés de A à Z.
-Communication avec une API : Apprendre à interagir avec un code back-end pour tester les fonctionnalités, ce qui est crucial pour les applications web modernes.
-Outils de Développement : Utiliser Figma pour accéder aux maquettes, Visual Studio Code pour le développement, et GitHub pour la gestion de version.
+Ce projet consiste à développer la partie front-end du site web d'une architecte d'intérieur en utilisant JavaScript et en établissant une communication avec une API. Vous y intégrerez des fonctionnalités interactives, une page d'administration et une modale pour ajouter des médias.
+
+## 📝 Instructions d'installation
+
+Clonez le dépôt :
+
+```bash
+git clone https://github.com/Jordan-celton/P6.git
+```
+
+Installez les dépendances (si nécessaire) :
+```bash
+npm install
+
+Lancez un serveur local pour tester votre projet :
+```
+```bash
+npx live-server
+```
+
+Testez les fonctionnalités avec le back-end (instructions dans le dossier /backend).
+
+## ✨ Fonctionnalités clés
+- Manipulation dynamique du DOM :
+    - Affichage des travaux de l'architecte.
+    - Gestion des interactions utilisateur.
+    
+- Page d'administration :
+     - Connexion sécurisée pour les administrateurs.
+     - Modale pour uploader de nouveaux médias.
+
+- Communication avec une API :
+     - Récupération des données pour afficher les travaux.
+     - Envoi des médias via des requêtes HTTP.
+- Responsive Design :
+     - Fonctionne sur différentes tailles d’écran.
+
+## Technologies utilisées
+
+- HTML5
+- CSS3
+- JavaScript
+- API REST
+- Visual Studio Code
+- Git & GitHub
+
+## 🤝 Contribuer
+
+Les contributions sont les bienvenues ! Pour toute suggestion ou amélioration, suivez ces étapes :
+
+
+- Forkez le projet.
+- Créez une nouvelle branche pour vos modifications.
+
+```bash
+git checkout -b feature-nouvelle-fonctionnalite
+```
+
+- Effectuez vos modifications et poussez-les :
+
+```bash
+git commit -m "Ajout d'une nouvelle fonctionnalité"
+git push origin feature-nouvelle-fonctionnalite
+```
+- Ouvrez une Pull Request pour examen.
+
+## 📜 License
+Ce projet est sous la licence MIT. Vous êtes libre de l'utiliser, de le modifier et de le distribuer selon les termes de cette licence.
+
+[MIT](https://choosealicense.com/licenses/mit/)
